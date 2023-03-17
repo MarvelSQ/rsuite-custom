@@ -9,6 +9,7 @@ import NotUploaded from "./NotUploaded";
 import Pagination from "./Pagination";
 import Toggle from "./Toggle";
 import Unfilled from "./Unfilled";
+import Uploader from "./Uploader";
 
 const PreviewMap = {
   Plaintext: {
@@ -24,6 +25,7 @@ const PreviewMap = {
   Pagination,
   Calendar,
   Toggle,
+  Uploader,
 };
 
 type PreviewCategory = keyof typeof PreviewMap;
