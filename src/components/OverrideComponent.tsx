@@ -1,23 +1,26 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useState } from "react";
 import * as Rsuite from "rsuite";
 
 const ContainerContext = React.createContext<() => HTMLDivElement | null>(
-  () => null
+  () => document.body as HTMLDivElement
 );
 
 export const Container = React.forwardRef<
   HTMLDivElement,
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 >((props, outterRef) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const getContainer = useCallback(() => ref.current, []);
+  const [ref, setRef] = useState<HTMLDivElement | null>(null);
+  const getContainer = useCallback(
+    () => ref || (document.body as HTMLDivElement),
+    [ref]
+  );
   return (
     <ContainerContext.Provider value={getContainer}>
       <div
         {...props}
         className={`relative ${props.className || ""}`}
         ref={(instance) => {
-          (ref as any).current = instance;
+          setRef(instance);
           if (typeof outterRef === "function") {
             outterRef(instance);
           } else if (outterRef) {

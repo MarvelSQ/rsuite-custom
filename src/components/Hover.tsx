@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Popover, Whisper } from "rsuite";
+import { Container } from "./OverrideComponent";
 
 function Hover({
   selector,
@@ -24,6 +25,7 @@ function Hover({
           width: targetRect.width,
           height: targetRect.height,
           backgroundColor: "rgba(0, 0, 0, 0.1)",
+          zIndex: 1000,
         };
 
         const content =
@@ -56,15 +58,10 @@ function Hover({
   }, [selector, container, hoverContent]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-      }}
-      ref={setContainer as (dom: HTMLDivElement) => void}
-    >
+    <Container ref={setContainer as (dom: HTMLDivElement) => void}>
       {children}
       {wrappers}
-    </div>
+    </Container>
   );
 }
 
