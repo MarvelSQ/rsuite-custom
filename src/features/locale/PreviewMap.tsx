@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import Breadcrumb from "./Breadcrumb";
 import Calendar from "./Calendar";
+import DatePicker from "./DatePicker";
 import InputPicker from "./InputPicker";
 import NoResultText from "./NoResultText";
 import NotFound from "./NotFound";
@@ -26,6 +27,7 @@ const PreviewMap = {
   Calendar,
   Toggle,
   Uploader,
+  DatePicker,
 };
 
 type PreviewCategory = keyof typeof PreviewMap;
