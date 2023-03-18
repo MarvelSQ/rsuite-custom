@@ -70,12 +70,13 @@ function Locales() {
     return localeCategories.reduce((acc, category) => {
       acc[category.key] = category.values.reduce(
         (acc, { key, value, isDateFNS }) => {
+          const inputValue = (locale[category.key] as any)[key] || value;
           if (isDateFNS) {
             acc[key] = dateFNSLocales.find(
-              (locale) => locale.code === value
+              (locale) => locale.code === inputValue
             ) as any;
           } else {
-            acc[key] = (locale[category.key] as any)[key] || value;
+            acc[key] = inputValue;
           }
           return acc;
         },
