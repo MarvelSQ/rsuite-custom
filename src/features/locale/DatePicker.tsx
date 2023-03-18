@@ -34,7 +34,7 @@ function DatePicker({ valueKey }: { valueKey: string }) {
   return (
     <div>
       <Hover
-        selector={selectorMap[valueKey]}
+        selector={selectorMap[valueKey as keyof typeof selectorMap]}
         hoverContent={(node) => {
           if (valueKey === "formattedDayPattern") {
             return node.title;
