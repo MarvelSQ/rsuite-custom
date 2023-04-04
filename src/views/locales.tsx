@@ -93,7 +93,7 @@ function Locales() {
       <div className="shadow-md flex flex-col">
         <div className="flex-shrink-0 flex-grow-0 p-2 px-6">
           <div className="flex rounded overflow-hidden items-center gap-1">
-            <RSuiteLogo height={24} />
+            <RSuiteLogo height={24} maxWidth="21px" />
             <div className="text-2xl align-middle font-extrabold">RSuite</div>
             <div className="text-l inline-block align-middle font-bold bg-blue-400 p-1 text-white rounded-r-md">
               Custom

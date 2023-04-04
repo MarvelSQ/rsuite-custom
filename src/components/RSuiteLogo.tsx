@@ -1,13 +1,15 @@
 interface LogoProps {
   width?: number;
   height?: number;
+  maxWidth?: string;
 }
 
-export default function RSuiteLogo({ width, height }: LogoProps) {
+export default function RSuiteLogo({ width, height, maxWidth }: LogoProps) {
   const style = {
     width,
     height,
     display: "inline-block",
+    maxWidth,
   };
   return (
     <div style={style}>
