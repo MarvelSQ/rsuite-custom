@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { Button, CustomProvider, Input, SelectPicker } from "rsuite";
+import { Button, CustomProvider, Drawer, Input, SelectPicker } from "rsuite";
 import defaultLocale from "rsuite/locales/default";
 import RSuiteLogo from "../components/RSuiteLogo";
 
@@ -23,6 +23,7 @@ const dateFNSLocales = Object.values(
   );
 
 import Preview from "../features/locale/PreviewMap";
+import { useInteractive } from "../components/DialogContainer";
 
 type LocaleCategoryKey = keyof typeof defaultLocale;
 
@@ -59,6 +60,8 @@ const emptyLocale = localeCategories.reduce((acc, category) => {
 }, {} as typeof defaultLocale);
 
 function Locales() {
+  const interactive = useInteractive();
+
   const [focused, setFocused] = useState({
     category: null as string | null,
     key: null as string | null,
@@ -182,7 +185,22 @@ function Locales() {
           })}
         </div>
         <div className="flex-shrink-0 p-2 px-6">
-          <Button appearance="primary" color="cyan">
+          <Button
+            appearance="primary"
+            color="cyan"
+            onClick={() => {
+              interactive.push(
+                <Drawer>
+                  <Drawer.Header>
+                    <Drawer.Title>Export Locales</Drawer.Title>
+                  </Drawer.Header>
+                  <Drawer.Body>
+                    <pre>{JSON.stringify(mergedLocale, null, 2)}</pre>
+                  </Drawer.Body>
+                </Drawer>
+              );
+            }}
+          >
             Export Locales
           </Button>
         </div>
