@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotFound() {
-  return <div>Not Found this key for any Component</div>;
+  return <div>This key was not found for any component.</div>;
 }
 
 export default NotFound;
