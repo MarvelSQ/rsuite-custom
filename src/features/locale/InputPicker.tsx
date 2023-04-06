@@ -16,7 +16,10 @@ function InputPickerDemo() {
         "input.rs-picker-search-input"
       ) as HTMLInputElement;
       if (input) {
-        mockInput(input, "test");
+        // 异步触发可以成功 blur
+        setTimeout(() => {
+          mockInput(input, "test");
+        }, 4);
       }
     }
   }, []);
